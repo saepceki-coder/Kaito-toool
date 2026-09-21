@@ -30,17 +30,22 @@ svg{stroke-width:1.7;width:1em;height:1em;flex-shrink:0}
 .main{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;min-height:0;padding-top:72px;padding-bottom:86px}
 .tab{display:none}.tab.on{display:block;animation:fu .35s cubic-bezier(.16,1,.3,1)}
 @keyframes fu{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.hero{position:relative;margin:16px;border-radius:22px;overflow:hidden;padding:24px 20px 26px;min-height:170px;display:flex;flex-direction:column;justify-content:flex-end;box-shadow:0 20px 50px rgba(0,0,0,.4);isolation:isolate}
-.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,#8b5cf6 0%,#3b82f6 35%,#06b6d4 70%,#10b981 100%);z-index:-3}
-.hero::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 15% 20%,rgba(236,72,153,.7) 0%,transparent 45%),radial-gradient(circle at 85% 80%,rgba(232,177,70,.5) 0%,transparent 40%);animation:mesh 12s ease-in-out infinite;z-index:-2;mix-blend-mode:overlay}
-@keyframes mesh{0%,100%{transform:scale(1) rotate(0deg)}50%{transform:scale(1.15) rotate(4deg)}}
-.hero .veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 0%,rgba(0,0,0,.35) 60%,rgba(8,9,12,.85) 100%);z-index:-1}
-.hero .ct{position:relative;z-index:2;color:#fff}
-.hero .tag{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:100px;background:rgba(255,255,255,.18);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.28);font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;width:fit-content;margin-bottom:11px}
+
+/* HERO VIDEO — GOJO / GENSHIN */
+.hero{position:relative;margin:16px;border-radius:22px;overflow:hidden;height:220px;background:#000;box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s ease}
+.hero video.on{opacity:1}
+.hero .ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(0,0,0,.55) 65%,rgba(8,9,12,.95) 100%);z-index:1}
+.hero .ct{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:20px;color:#fff;z-index:3}
+.hero .tag{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:100px;background:rgba(0,0,0,.55);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.22);font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;width:fit-content;margin-bottom:10px}
 .hero .tag .d{width:5px;height:5px;border-radius:50%;background:#22c55e;box-shadow:0 0 10px #22c55e;animation:pd 1.6s infinite}
 @keyframes pd{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
-.hero h2{font-size:26px;font-weight:900;letter-spacing:-.045em;line-height:1.05;text-shadow:0 4px 20px rgba(0,0,0,.4);margin-bottom:6px}
-.hero p{font-size:12.5px;opacity:.85;font-weight:500}
+.hero h2{font-size:24px;font-weight:900;letter-spacing:-.04em;line-height:1.05;text-shadow:0 4px 20px rgba(0,0,0,.9);margin-bottom:5px}
+.hero p{font-size:11.5px;opacity:.8;font-weight:500;text-shadow:0 2px 10px rgba(0,0,0,.8)}
+.hero .sw{position:absolute;top:14px;right:14px;z-index:5;width:44px;height:44px;border-radius:13px;background:rgba(0,0,0,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;color:#fff;font-size:19px;transition:all .35s cubic-bezier(.4,1.4,.6,1);box-shadow:0 4px 14px rgba(0,0,0,.4)}
+.hero .sw:active{transform:scale(.88) rotate(180deg);background:rgba(232,177,70,.5)}
+
+/* MONITOR */
 .monitor{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;padding:0 16px;margin-bottom:24px}
 .mcard{background:var(--surf);border:1px solid var(--bor);border-radius:13px;padding:11px 12px;position:relative;overflow:hidden}
 .mcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,currentColor,transparent 80%)}
@@ -53,26 +58,67 @@ svg{stroke-width:1.7;width:1em;height:1em;flex-shrink:0}
 .mcard .mv .d{width:6px;height:6px;border-radius:50%;flex-shrink:0}
 .mcard .mv .d.grn{background:var(--grn);box-shadow:0 0 8px var(--grn);animation:pd 1.6s infinite}
 .mcard .mv .d.red{background:var(--red);box-shadow:0 0 8px var(--red)}
+
 .sec{padding:0 16px;margin-bottom:26px}
 .st{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.13em;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;color:var(--soft)}
 .st .stl{display:flex;align-items:center;gap:9px}
 .st .stl::before{content:'';width:4px;height:15px;border-radius:2px;background:linear-gradient(180deg,var(--gold),var(--gold2));box-shadow:0 0 10px rgba(232,177,70,.5)}
 .st .cnt{font-size:9.5px;color:var(--gold);padding:3px 9px;border-radius:100px;background:rgba(232,177,70,.1);border:1px solid rgba(232,177,70,.25);font-weight:800}
-.tg{display:grid;grid-template-columns:repeat(4,1fr);gap:12px 6px}
-.tg .ti{display:flex;flex-direction:column;align-items:center;gap:9px;padding:8px 2px;border-radius:14px;transition:all .22s;cursor:pointer}
-.tg .ti:active{transform:scale(.92)}
-.tg .ti .ic{width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:26px;position:relative;box-shadow:0 8px 20px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.15);overflow:hidden}
-.tg .ti .ic::before{content:'';position:absolute;top:0;left:0;right:0;height:50%;background:linear-gradient(180deg,rgba(255,255,255,.28) 0%,transparent 100%);pointer-events:none}
-.tg .ti .ic::after{content:'';position:absolute;inset:1px;border-radius:15px;border:1px solid rgba(255,255,255,.12);pointer-events:none}
-.tg .ti .ic svg{position:relative;z-index:1;color:#fff;stroke-width:2.1}
-.tg .ti .lbl{font-size:10.5px;font-weight:700;color:var(--txt);text-align:center;line-height:1.25;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;max-width:100%}
-.tg .ti .ic.gold{background:linear-gradient(135deg,#f4c96b,#c8922b)}.tg .ti .ic.red{background:linear-gradient(135deg,#ef4444,#991b1b)}.tg .ti .ic.blue{background:linear-gradient(135deg,#3b82f6,#1e40af)}.tg .ti .ic.cyan{background:linear-gradient(135deg,#22d3ee,#0e7490)}.tg .ti .ic.grn{background:linear-gradient(135deg,#22c55e,#047857)}.tg .ti .ic.org{background:linear-gradient(135deg,#fb923c,#b45309)}.tg .ti .ic.pnk{background:linear-gradient(135deg,#f472b6,#be185d)}.tg .ti .ic.pur{background:linear-gradient(135deg,#a78bfa,#6d28d9)}.tg .ti .ic.slate{background:linear-gradient(135deg,#64748b,#1e293b)}.tg .ti .ic.tt{background:linear-gradient(135deg,#25f4ee,#000 55%,#fe2c55)}.tg .ti .ic.ig{background:linear-gradient(135deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)}.tg .ti .ic.sp{background:linear-gradient(135deg,#1ed760,#12843a)}.tg .ti .ic.yt{background:linear-gradient(135deg,#ff3333,#b91c1c)}.tg .ti .ic.fb{background:linear-gradient(135deg,#1877f2,#0a5bd4)}.tg .ti .ic.multi{background:linear-gradient(135deg,#f43f5e 0%,#8b5cf6 50%,#06b6d4 100%)}
+
+/* ICON LEBIH BESAR + DETAIL */
+.tg{display:grid;grid-template-columns:repeat(4,1fr);gap:14px 8px}
+.tg .ti{display:flex;flex-direction:column;align-items:center;gap:10px;padding:6px 2px;border-radius:16px;transition:all .25s cubic-bezier(.4,1.4,.6,1);cursor:pointer;position:relative}
+.tg .ti:active{transform:scale(.9)}
+.tg .ti:active .ic{box-shadow:0 4px 12px rgba(0,0,0,.5)}
+.tg .ti .ic{
+  width:64px;height:64px;border-radius:19px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:30px;position:relative;
+  box-shadow:
+    0 10px 24px rgba(0,0,0,.45),
+    0 4px 8px rgba(0,0,0,.3),
+    inset 0 1px 0 rgba(255,255,255,.25),
+    inset 0 -1px 0 rgba(0,0,0,.15);
+  transition:all .25s;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.08);
+}
+.tg .ti .ic::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:55%;
+  background:linear-gradient(180deg,rgba(255,255,255,.32) 0%,rgba(255,255,255,.05) 60%,transparent 100%);
+  pointer-events:none;border-radius:19px 19px 50% 50%;
+}
+.tg .ti .ic::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.25) 0%,transparent 50%);
+  pointer-events:none;opacity:.7;
+}
+.tg .ti .ic svg{position:relative;z-index:1;color:#fff;stroke-width:2.2;width:30px;height:30px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.3))}
+.tg .ti .lbl{font-size:11px;font-weight:700;color:var(--txt);text-align:center;line-height:1.25;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;max-width:100%;letter-spacing:-.005em}
+
+.tg .ti .ic.gold{background:linear-gradient(135deg,#f4c96b 0%,#e8b146 50%,#c8922b 100%)}
+.tg .ti .ic.red{background:linear-gradient(135deg,#ff5f5f 0%,#ef4444 50%,#991b1b 100%)}
+.tg .ti .ic.blue{background:linear-gradient(135deg,#60a5fa 0%,#3b82f6 50%,#1e40af 100%)}
+.tg .ti .ic.cyan{background:linear-gradient(135deg,#67e8f9 0%,#22d3ee 50%,#0e7490 100%)}
+.tg .ti .ic.grn{background:linear-gradient(135deg,#4ade80 0%,#22c55e 50%,#047857 100%)}
+.tg .ti .ic.org{background:linear-gradient(135deg,#fdba74 0%,#fb923c 50%,#b45309 100%)}
+.tg .ti .ic.pnk{background:linear-gradient(135deg,#f9a8d4 0%,#f472b6 50%,#be185d 100%)}
+.tg .ti .ic.pur{background:linear-gradient(135deg,#c4b5fd 0%,#a78bfa 50%,#6d28d9 100%)}
+.tg .ti .ic.slate{background:linear-gradient(135deg,#94a3b8 0%,#64748b 50%,#1e293b 100%)}
+.tg .ti .ic.tt{background:linear-gradient(135deg,#25f4ee 0%,#0a0a0a 50%,#fe2c55 100%)}
+.tg .ti .ic.ig{background:linear-gradient(135deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)}
+.tg .ti .ic.sp{background:linear-gradient(135deg,#4ade80 0%,#1ed760 50%,#12843a 100%)}
+.tg .ti .ic.yt{background:linear-gradient(135deg,#ff5555 0%,#ff0000 50%,#991b1b 100%)}
+.tg .ti .ic.fb{background:linear-gradient(135deg,#4a9cff 0%,#1877f2 50%,#0a5bd4 100%)}
+.tg .ti .ic.multi{background:linear-gradient(135deg,#f43f5e 0%,#8b5cf6 50%,#06b6d4 100%)}
+
 .nav{position:absolute;bottom:0;left:0;right:0;z-index:100;display:flex;background:var(--glass);backdrop-filter:blur(24px) saturate(1.5);-webkit-backdrop-filter:blur(24px) saturate(1.5);border-top:1px solid var(--bor);padding:8px 4px max(8px,env(safe-area-inset-bottom))}
 .nav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 2px;color:var(--mut);font-size:9.5px;font-weight:800;position:relative;transition:color .25s}
 .nav button svg{width:22px;height:22px;transition:transform .3s cubic-bezier(.4,1.4,.6,1)}
 .nav button.on{color:var(--gold)}
 .nav button.on svg{transform:translateY(-3px) scale(1.08)}
 .nav button.on::after{content:'';position:absolute;top:-1px;left:50%;transform:translateX(-50%);width:24px;height:2.5px;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:2px;box-shadow:0 0 12px rgba(232,177,70,.6)}
+
 .panel{display:none;position:fixed;inset:0;z-index:200;background:var(--bg);flex-direction:column;animation:pi .32s cubic-bezier(.16,1,.3,1)}
 .panel.on{display:flex}
 @keyframes pi{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
@@ -185,6 +231,7 @@ svg{stroke-width:1.7;width:1em;height:1em;flex-shrink:0}
 <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></symbol>
 <symbol id="i-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6"/></symbol>
 <symbol id="i-img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5-11 11"/></symbol>
+<symbol id="i-swap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 16H3M3 16l3-3M3 16l3 3M17 8h4M21 8l-3-3M21 8l-3 3"/></symbol>
 <symbol id="i-yt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z" fill="currentColor"/></symbol>
 <symbol id="i-tt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></symbol>
 <symbol id="i-ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></symbol>
@@ -222,14 +269,23 @@ svg{stroke-width:1.7;width:1em;height:1em;flex-shrink:0}
 
   <div class="main" id="scrollArea">
     <div class="tab on" id="tabHome">
+      <!-- HERO VIDEO: GOJO / GENSHIN -->
       <div class="hero">
-        <div class="veil"></div>
+        <video id="v1" autoplay muted loop playsinline webkit-playsinline preload="auto" class="on">
+          <source src="https://files.catbox.moe/s5sg7n.mp4" type="video/mp4">
+        </video>
+        <video id="v2" autoplay muted loop playsinline webkit-playsinline preload="auto">
+          <source src="https://files.catbox.moe/0kuct4.mp4" type="video/mp4">
+        </video>
+        <div class="ov"></div>
+        <button class="sw" onclick="swapVid()"><svg><use href="#i-swap"/></svg></button>
         <div class="ct">
-          <div class="tag"><span class="d"></span><span>Online</span></div>
-          <h2>Selamat Datang</h2>
-          <p>23 tools dalam satu aplikasi</p>
+          <div class="tag"><span class="d"></span><span id="vlabel">GOJO</span></div>
+          <h2 id="heroTitle">Gojo vs Sukuna</h2>
+          <p id="heroSub">Tap swap untuk ganti video</p>
         </div>
       </div>
+
       <div class="monitor" id="monitorGrid"></div>
       <div class="sec"><div class="st"><div class="stl"><span>Downloader</span></div><span class="cnt" id="cntDl">0</span></div><div class="tg" id="dlTools"></div></div>
       <div class="sec"><div class="st"><div class="stl"><span>Utility</span></div><span class="cnt" id="cntUtil">0</span></div><div class="tg" id="utilTools"></div></div>
@@ -242,7 +298,7 @@ svg{stroke-width:1.7;width:1em;height:1em;flex-shrink:0}
       <div style="padding:32px 16px 24px;text-align:center">
         <div style="width:88px;height:88px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold2));display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:36px;font-weight:900;color:#0a0a0f;box-shadow:0 12px 40px rgba(232,177,70,.35)">S</div>
         <div style="font-size:20px;font-weight:800;letter-spacing:-.03em">Sion User</div>
-        <div style="font-size:12px;color:var(--mut);margin-top:4px">v17 · Vercel</div>
+        <div style="font-size:12px;color:var(--mut);margin-top:4px">v18 · Vercel</div>
       </div>
       <div class="sec">
         <div class="st"><div class="stl"><span>Aksi</span></div></div>
@@ -274,7 +330,7 @@ svg{stroke-width:1.7;width:1em;height:1em;flex-shrink:0}
     <div class="mbody">
       <div class="si"><div class="lb">Tema</div><select id="selTheme" onchange="setTheme(this.value)"><option value="dark">Dark</option><option value="light">Light</option></select></div>
       <div class="si"><div class="lb">Bahasa</div><button class="btn sec" onclick="openLangPicker()" style="max-width:150px;padding:9px 14px;font-size:12px"><svg><use href="#i-globe"/></svg><span id="curLangLabel">Indonesia</span></button></div>
-      <div style="padding:18px 0 0;text-align:center;font-size:11.5px;color:var(--mut)">Sion Hub v17</div>
+      <div style="padding:18px 0 0;text-align:center;font-size:11.5px;color:var(--mut)">Sion Hub v18</div>
     </div>
   </div>
 </div>
@@ -295,11 +351,12 @@ svg{stroke-width:1.7;width:1em;height:1em;flex-shrink:0}
 const $ = id => document.getElementById(id);
 const S = { theme:'dark', lang:'id' };
 let toastN = 0, html5QrcodeScanner = null, qrTab = 'text', timerI = null, timerMs = 0, timerRun = false;
+let curVid = 'gojo';
 
 const LANGS = [['af','Afrikaans'],['sq','Shqip'],['am','አማርኛ'],['ar','العربية'],['hy','Հայերեն'],['az','Azərbaycan'],['eu','Euskara'],['be','Беларуская'],['bn','বাংলা'],['bs','Bosanski'],['bg','Български'],['ca','Català'],['ceb','Cebuano'],['zh-CN','简体中文'],['zh-TW','繁體中文'],['hr','Hrvatski'],['cs','Čeština'],['da','Dansk'],['nl','Nederlands'],['en','English'],['et','Eesti'],['fil','Filipino'],['fi','Suomi'],['fr','Français'],['gl','Galego'],['ka','ქართული'],['de','Deutsch'],['el','Ελληνικά'],['gu','ગુજરાતી'],['ha','Hausa'],['he','עברית'],['hi','हिन्दी'],['hu','Magyar'],['is','Íslenska'],['ig','Igbo'],['id','Indonesia'],['ga','Gaeilge'],['it','Italiano'],['ja','日本語'],['jv','Basa Jawa'],['kn','ಕನ್ನಡ'],['kk','Қазақ'],['km','ខ្មែរ'],['ko','한국어'],['ku','Kurdî'],['ky','Кыргызча'],['lo','ລາວ'],['la','Latina'],['lv','Latviešu'],['lt','Lietuvių'],['lb','Lëtzebuergesch'],['mk','Македонски'],['mg','Malagasy'],['ms','Melayu'],['ml','മലയാളം'],['mt','Malti'],['mi','Māori'],['mr','मराठी'],['mn','Монгол'],['my','မြန်မာ'],['ne','नेपाली'],['no','Norsk'],['ps','پښتو'],['fa','فارسی'],['pl','Polski'],['pt','Português'],['pa','ਪੰਜਾਬੀ'],['ro','Română'],['ru','Русский'],['gd','Gàidhlig'],['sr','Српски'],['st','Sesotho'],['sn','Shona'],['sd','سنڌي'],['si','සිංහල'],['sk','Slovenčina'],['sl','Slovenščina'],['so','Soomaali'],['es','Español'],['su','Basa Sunda'],['sw','Kiswahili'],['sv','Svenska'],['tg','Тоҷикӣ'],['ta','தமிழ்'],['tt','Татар'],['te','తెలుగు'],['th','ไทย'],['tr','Türkçe'],['uk','Українська'],['ur','اردو'],['uz','Oʻzbek'],['vi','Tiếng Việt'],['cy','Cymraeg'],['xh','isiXhosa'],['yi','ייִדיש'],['yo','Yorùbá'],['zu','isiZulu']];
 
-function saveS(){try{localStorage.setItem('sion_v17',JSON.stringify(S));}catch(e){}}
-function loadS(){try{Object.assign(S,JSON.parse(localStorage.getItem('sion_v17')||'{}'));}catch(e){}if(!S.lang)S.lang='id';setTheme(S.theme);applyLang();const th=$('selTheme');if(th)th.value=S.theme;}
+function saveS(){try{localStorage.setItem('sion_v18',JSON.stringify(S));}catch(e){}}
+function loadS(){try{Object.assign(S,JSON.parse(localStorage.getItem('sion_v18')||'{}'));}catch(e){}if(!S.lang)S.lang='id';setTheme(S.theme);applyLang();const th=$('selTheme');if(th)th.value=S.theme;}
 function toast(msg,type='info',dur=2400){const w=$('toasts');if(!w)return;if(toastN>=3){const o=w.firstChild;if(o){o.classList.add('out');setTimeout(()=>o.remove(),250);}}else toastN++;const el=document.createElement('div');el.className='toast '+type;el.innerHTML='<span style="font-weight:800">'+(type==='ok'?'✓':type==='err'?'✕':'i')+'</span><span>'+msg+'</span>';w.appendChild(el);setTimeout(()=>{el.classList.add('out');setTimeout(()=>{el.remove();toastN=Math.max(0,toastN-1);},250);},dur);}
 function haptic(d=10){if(navigator.vibrate)navigator.vibrate(d);}
 function esc(v){return String(v??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');}
@@ -309,6 +366,28 @@ function openSettings(){$('settingsModal').classList.add('on');}
 function closeSettings(){$('settingsModal').classList.remove('on');}
 function clearAll(){if(!confirm('Hapus semua data?'))return;localStorage.clear();location.reload();}
 function switchTab(n,btn){haptic();document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('on'));$('tab'+n).classList.add('on');btn.classList.add('on');$('scrollArea').scrollTop=0;}
+
+/* HERO VIDEO SWAP */
+function swapVid(){
+  haptic(15);
+  const v1=$('v1'),v2=$('v2');
+  if(!v1||!v2)return;
+  if(curVid==='gojo'){
+    curVid='genshin';
+    v1.classList.remove('on');v2.classList.add('on');
+    try{v2.currentTime=0;v2.play().catch(()=>{});}catch(e){}
+    $('vlabel').textContent='GENSHIN';
+    $('heroTitle').textContent='Genshin Impact';
+    $('heroSub').textContent='Tap swap untuk ganti video';
+  }else{
+    curVid='gojo';
+    v2.classList.remove('on');v1.classList.add('on');
+    try{v1.currentTime=0;v1.play().catch(()=>{});}catch(e){}
+    $('vlabel').textContent='GOJO';
+    $('heroTitle').textContent='Gojo vs Sukuna';
+    $('heroSub').textContent='Tap swap untuk ganti video';
+  }
+}
 
 function applyLang(){const l=LANGS.find(x=>x[0]===S.lang);if(l)$('curLangLabel').textContent=l[1];document.documentElement.lang=S.lang;}
 function openLangPicker(){$('langModal').classList.add('on');renderLangList();setTimeout(()=>$('langSearch').focus(),100);}
