@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="theme-color" content="#08090c">
-<meta name="apple-mobile-web-app-capable" content="yes">
 <title>Sion Hub</title>
 <script src="https://unpkg.com/html5-qrcode"></script>
 <style>
@@ -31,12 +30,12 @@ svg{stroke-width:1.7;width:1em;height:1em;flex-shrink:0}
 .tab{display:none}.tab.on{display:block;animation:fu .35s cubic-bezier(.16,1,.3,1)}
 @keyframes fu{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
-/* HERO VIDEO — GOJO / GENSHIN */
-.hero{position:relative;margin:16px;border-radius:22px;overflow:hidden;height:220px;background:#000;box-shadow:0 20px 50px rgba(0,0,0,.5)}
-.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s ease}
+/* HERO */
+.hero{position:relative;margin:16px;border-radius:22px;overflow:hidden;height:220px;background:linear-gradient(135deg,#8b5cf6,#3b82f6);box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s ease;z-index:1}
 .hero video.on{opacity:1}
-.hero .ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(0,0,0,.55) 65%,rgba(8,9,12,.95) 100%);z-index:1}
-.hero .ct{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:20px;color:#fff;z-index:3}
+.hero .ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(0,0,0,.55) 65%,rgba(8,9,12,.95) 100%);z-index:2;pointer-events:none}
+.hero .ct{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:20px;color:#fff;z-index:3;pointer-events:none}
 .hero .tag{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:100px;background:rgba(0,0,0,.55);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.22);font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;width:fit-content;margin-bottom:10px}
 .hero .tag .d{width:5px;height:5px;border-radius:50%;background:#22c55e;box-shadow:0 0 10px #22c55e;animation:pd 1.6s infinite}
 @keyframes pd{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
@@ -45,19 +44,19 @@ svg{stroke-width:1.7;width:1em;height:1em;flex-shrink:0}
 .hero .sw{position:absolute;top:14px;right:14px;z-index:5;width:44px;height:44px;border-radius:13px;background:rgba(0,0,0,.55);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;color:#fff;font-size:19px;transition:all .35s cubic-bezier(.4,1.4,.6,1);box-shadow:0 4px 14px rgba(0,0,0,.4)}
 .hero .sw:active{transform:scale(.88) rotate(180deg);background:rgba(232,177,70,.5)}
 
-/* MONITOR */
-.monitor{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;padding:0 16px;margin-bottom:24px}
-.mcard{background:var(--surf);border:1px solid var(--bor);border-radius:13px;padding:11px 12px;position:relative;overflow:hidden}
-.mcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,currentColor,transparent 80%)}
+/* MONITOR — 2 KOLOM x 3 BARIS */
+.monitor{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;padding:0 16px;margin-bottom:22px}
+.mcard{background:var(--surf);border:1px solid var(--bor);border-radius:12px;padding:10px 11px;display:flex;align-items:center;gap:10px;position:relative;overflow:hidden;transition:all .2s}
+.mcard::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:currentColor;border-radius:3px 0 0 3px}
 .mcard.pur{color:var(--pur)}.mcard.blu{color:var(--blue)}.mcard.cyn{color:var(--cyan)}.mcard.grn{color:var(--grn)}.mcard.org{color:var(--org)}.mcard.red{color:var(--red)}
-.mcard .mh{display:flex;align-items:center;gap:6px;margin-bottom:6px}
-.mcard .mh .ic{width:18px;height:18px;border-radius:6px;display:flex;align-items:center;justify-content:center;background:currentColor;color:var(--bg)}
-.mcard .mh .ic svg{width:11px;height:11px;stroke-width:2.8}
-.mcard .ml{font-size:7.5px;color:var(--mut);text-transform:uppercase;letter-spacing:.12em;font-weight:800}
+.mcard .ic{width:32px;height:32px;border-radius:9px;background:currentColor;color:var(--bg);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;opacity:.9}
+.mcard .ic svg{width:16px;height:16px;stroke-width:2.4}
+.mcard .info{flex:1;min-width:0}
+.mcard .ml{font-size:7.5px;color:var(--mut);text-transform:uppercase;letter-spacing:.14em;font-weight:800;line-height:1;margin-bottom:3px}
 .mcard .mv{font-size:11.5px;font-weight:800;color:var(--txt);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:flex;align-items:center;gap:5px}
-.mcard .mv .d{width:6px;height:6px;border-radius:50%;flex-shrink:0}
-.mcard .mv .d.grn{background:var(--grn);box-shadow:0 0 8px var(--grn);animation:pd 1.6s infinite}
-.mcard .mv .d.red{background:var(--red);box-shadow:0 0 8px var(--red)}
+.mcard .mv .d{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.mcard .mv .d.grn{background:var(--grn);box-shadow:0 0 6px var(--grn);animation:pd 1.6s infinite}
+.mcard .mv .d.red{background:var(--red);box-shadow:0 0 6px var(--red)}
 
 .sec{padding:0 16px;margin-bottom:26px}
 .st{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.13em;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;color:var(--soft)}
@@ -65,52 +64,66 @@ svg{stroke-width:1.7;width:1em;height:1em;flex-shrink:0}
 .st .stl::before{content:'';width:4px;height:15px;border-radius:2px;background:linear-gradient(180deg,var(--gold),var(--gold2));box-shadow:0 0 10px rgba(232,177,70,.5)}
 .st .cnt{font-size:9.5px;color:var(--gold);padding:3px 9px;border-radius:100px;background:rgba(232,177,70,.1);border:1px solid rgba(232,177,70,.25);font-weight:800}
 
-/* ICON LEBIH BESAR + DETAIL */
-.tg{display:grid;grid-template-columns:repeat(4,1fr);gap:14px 8px}
-.tg .ti{display:flex;flex-direction:column;align-items:center;gap:10px;padding:6px 2px;border-radius:16px;transition:all .25s cubic-bezier(.4,1.4,.6,1);cursor:pointer;position:relative}
+/* ICON — CLEAN GLYPH STYLE, BUKAN APP ICON */
+.tg{display:grid;grid-template-columns:repeat(4,1fr);gap:16px 8px}
+.tg .ti{display:flex;flex-direction:column;align-items:center;gap:11px;padding:4px 2px;border-radius:14px;transition:all .25s cubic-bezier(.4,1.4,.6,1);cursor:pointer}
 .tg .ti:active{transform:scale(.9)}
-.tg .ti:active .ic{box-shadow:0 4px 12px rgba(0,0,0,.5)}
 .tg .ti .ic{
-  width:64px;height:64px;border-radius:19px;
+  width:58px;height:58px;border-radius:20px;
   display:flex;align-items:center;justify-content:center;
-  font-size:30px;position:relative;
-  box-shadow:
-    0 10px 24px rgba(0,0,0,.45),
-    0 4px 8px rgba(0,0,0,.3),
-    inset 0 1px 0 rgba(255,255,255,.25),
-    inset 0 -1px 0 rgba(0,0,0,.15);
+  position:relative;
   transition:all .25s;
+  background:var(--surf);
+  border:1.5px solid var(--bor);
   overflow:hidden;
-  border:1px solid rgba(255,255,255,.08);
 }
 .tg .ti .ic::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:55%;
-  background:linear-gradient(180deg,rgba(255,255,255,.32) 0%,rgba(255,255,255,.05) 60%,transparent 100%);
-  pointer-events:none;border-radius:19px 19px 50% 50%;
-}
-.tg .ti .ic::after{
   content:'';position:absolute;inset:0;
-  background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.25) 0%,transparent 50%);
-  pointer-events:none;opacity:.7;
+  background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.06) 0%,transparent 55%);
+  pointer-events:none;
 }
-.tg .ti .ic svg{position:relative;z-index:1;color:#fff;stroke-width:2.2;width:30px;height:30px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.3))}
-.tg .ti .lbl{font-size:11px;font-weight:700;color:var(--txt);text-align:center;line-height:1.25;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;max-width:100%;letter-spacing:-.005em}
+.tg .ti .ic svg{
+  position:relative;z-index:1;
+  width:26px;height:26px;
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  fill:none;
+}
+.tg .ti .ic svg.fill{fill:currentColor;stroke:none}
+.tg .ti .lbl{font-size:10.5px;font-weight:700;color:var(--txt);text-align:center;line-height:1.2;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;max-width:100%;letter-spacing:-.005em}
 
-.tg .ti .ic.gold{background:linear-gradient(135deg,#f4c96b 0%,#e8b146 50%,#c8922b 100%)}
-.tg .ti .ic.red{background:linear-gradient(135deg,#ff5f5f 0%,#ef4444 50%,#991b1b 100%)}
-.tg .ti .ic.blue{background:linear-gradient(135deg,#60a5fa 0%,#3b82f6 50%,#1e40af 100%)}
-.tg .ti .ic.cyan{background:linear-gradient(135deg,#67e8f9 0%,#22d3ee 50%,#0e7490 100%)}
-.tg .ti .ic.grn{background:linear-gradient(135deg,#4ade80 0%,#22c55e 50%,#047857 100%)}
-.tg .ti .ic.org{background:linear-gradient(135deg,#fdba74 0%,#fb923c 50%,#b45309 100%)}
-.tg .ti .ic.pnk{background:linear-gradient(135deg,#f9a8d4 0%,#f472b6 50%,#be185d 100%)}
-.tg .ti .ic.pur{background:linear-gradient(135deg,#c4b5fd 0%,#a78bfa 50%,#6d28d9 100%)}
-.tg .ti .ic.slate{background:linear-gradient(135deg,#94a3b8 0%,#64748b 50%,#1e293b 100%)}
-.tg .ti .ic.tt{background:linear-gradient(135deg,#25f4ee 0%,#0a0a0a 50%,#fe2c55 100%)}
-.tg .ti .ic.ig{background:linear-gradient(135deg,#f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)}
-.tg .ti .ic.sp{background:linear-gradient(135deg,#4ade80 0%,#1ed760 50%,#12843a 100%)}
-.tg .ti .ic.yt{background:linear-gradient(135deg,#ff5555 0%,#ff0000 50%,#991b1b 100%)}
-.tg .ti .ic.fb{background:linear-gradient(135deg,#4a9cff 0%,#1877f2 50%,#0a5bd4 100%)}
-.tg .ti .ic.multi{background:linear-gradient(135deg,#f43f5e 0%,#8b5cf6 50%,#06b6d4 100%)}
+/* Warna per brand — warna stroke + border + glow */
+.tg .ti .ic.tt{color:#25f4ee;border-color:rgba(37,244,238,.3);background:rgba(37,244,238,.06)}
+.tg .ti .ic.tt::before{background:radial-gradient(circle at 30% 25%,rgba(37,244,238,.15) 0%,transparent 60%)}
+.tg .ti .ic.ig{color:#e6683c;border-color:rgba(230,104,60,.3);background:rgba(230,104,60,.06)}
+.tg .ti .ic.ig::before{background:radial-gradient(circle at 30% 25%,rgba(230,104,60,.15) 0%,transparent 60%)}
+.tg .ti .ic.sp{color:#1ed760;border-color:rgba(30,215,96,.3);background:rgba(30,215,96,.06)}
+.tg .ti .ic.sp::before{background:radial-gradient(circle at 30% 25%,rgba(30,215,96,.15) 0%,transparent 60%)}
+.tg .ti .ic.yt{color:#ff4444;border-color:rgba(255,68,68,.3);background:rgba(255,68,68,.06)}
+.tg .ti .ic.yt::before{background:radial-gradient(circle at 30% 25%,rgba(255,68,68,.15) 0%,transparent 60%)}
+.tg .ti .ic.fb{color:#4a9cff;border-color:rgba(74,156,255,.3);background:rgba(74,156,255,.06)}
+.tg .ti .ic.fb::before{background:radial-gradient(circle at 30% 25%,rgba(74,156,255,.15) 0%,transparent 60%)}
+.tg .ti .ic.red{color:#ef4444;border-color:rgba(239,68,68,.3);background:rgba(239,68,68,.06)}
+.tg .ti .ic.red::before{background:radial-gradient(circle at 30% 25%,rgba(239,68,68,.15) 0%,transparent 60%)}
+.tg .ti .ic.blue{color:#60a5fa;border-color:rgba(96,165,250,.3);background:rgba(96,165,250,.06)}
+.tg .ti .ic.blue::before{background:radial-gradient(circle at 30% 25%,rgba(96,165,250,.15) 0%,transparent 60%)}
+.tg .ti .ic.cyan{color:#22d3ee;border-color:rgba(34,211,238,.3);background:rgba(34,211,238,.06)}
+.tg .ti .ic.cyan::before{background:radial-gradient(circle at 30% 25%,rgba(34,211,238,.15) 0%,transparent 60%)}
+.tg .ti .ic.grn{color:#22c55e;border-color:rgba(34,197,94,.3);background:rgba(34,197,94,.06)}
+.tg .ti .ic.grn::before{background:radial-gradient(circle at 30% 25%,rgba(34,197,94,.15) 0%,transparent 60%)}
+.tg .ti .ic.org{color:#fb923c;border-color:rgba(251,146,60,.3);background:rgba(251,146,60,.06)}
+.tg .ti .ic.org::before{background:radial-gradient(circle at 30% 25%,rgba(251,146,60,.15) 0%,transparent 60%)}
+.tg .ti .ic.pnk{color:#f472b6;border-color:rgba(244,114,182,.3);background:rgba(244,114,182,.06)}
+.tg .ti .ic.pnk::before{background:radial-gradient(circle at 30% 25%,rgba(244,114,182,.15) 0%,transparent 60%)}
+.tg .ti .ic.pur{color:#a78bfa;border-color:rgba(167,139,250,.3);background:rgba(167,139,250,.06)}
+.tg .ti .ic.pur::before{background:radial-gradient(circle at 30% 25%,rgba(167,139,250,.15) 0%,transparent 60%)}
+.tg .ti .ic.slate{color:#94a3b8;border-color:rgba(148,163,184,.3);background:rgba(148,163,184,.06)}
+.tg .ti .ic.slate::before{background:radial-gradient(circle at 30% 25%,rgba(148,163,184,.15) 0%,transparent 60%)}
+.tg .ti .ic.multi{color:#c084fc;border-color:rgba(192,132,252,.3);background:linear-gradient(135deg,rgba(244,63,94,.08),rgba(139,92,246,.08),rgba(6,182,212,.08))}
+.tg .ti .ic.multi::before{background:radial-gradient(circle at 30% 25%,rgba(192,132,252,.15) 0%,transparent 60%)}
+.tg .ti .ic.gold{color:#e8b146;border-color:rgba(232,177,70,.3);background:rgba(232,177,70,.06)}
+.tg .ti .ic.gold::before{background:radial-gradient(circle at 30% 25%,rgba(232,177,70,.15) 0%,transparent 60%)}
 
 .nav{position:absolute;bottom:0;left:0;right:0;z-index:100;display:flex;background:var(--glass);backdrop-filter:blur(24px) saturate(1.5);-webkit-backdrop-filter:blur(24px) saturate(1.5);border-top:1px solid var(--bor);padding:8px 4px max(8px,env(safe-area-inset-bottom))}
 .nav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 2px;color:var(--mut);font-size:9.5px;font-weight:800;position:relative;transition:color .25s}
@@ -232,7 +245,7 @@ svg{stroke-width:1.7;width:1em;height:1em;flex-shrink:0}
 <symbol id="i-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6"/></symbol>
 <symbol id="i-img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5-11 11"/></symbol>
 <symbol id="i-swap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M7 16H3M3 16l3-3M3 16l3 3M17 8h4M21 8l-3-3M21 8l-3 3"/></symbol>
-<symbol id="i-yt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z" fill="currentColor"/></symbol>
+<symbol id="i-yt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 9l5 3-5 3z" fill="currentColor" stroke="none"/></symbol>
 <symbol id="i-tt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></symbol>
 <symbol id="i-ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></symbol>
 <symbol id="i-sp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M7 15c2.5-1 5.5-1 8 0M6.5 11c3-1.5 7-1.5 10 0M6 7.5c3.5-2 8.5-2 12 0"/></symbol>
@@ -245,12 +258,12 @@ svg{stroke-width:1.7;width:1em;height:1em;flex-shrink:0}
 <symbol id="i-box" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.7l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.7l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><path d="M3.3 7L12 12l8.7-5M12 22V12"/></symbol>
 <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 10-7.8 7.8l1.1 1L12 21l7.7-7.6 1.1-1a5.5 5.5 0 000-7.8z"/></symbol>
 <symbol id="i-translate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h7M9 3v2c0 4-2 7-5 9M5 9c0 3 2 5 5 6M14 12l4 9M20 12l-4 9M15.5 17h5"/></symbol>
-<symbol id="i-cpu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></symbol>
-<symbol id="i-wifi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M5 12.55a11 11 0 0114 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></symbol>
-<symbol id="i-battery" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect x="2" y="6" width="18" height="12" rx="2"/><path d="M22 11v2"/></symbol>
-<symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></symbol>
-<symbol id="i-device" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></symbol>
-<symbol id="i-monitor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></symbol>
+<symbol id="i-cpu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></symbol>
+<symbol id="i-wifi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0114 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></symbol>
+<symbol id="i-battery" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="18" height="12" rx="2"/><path d="M22 11v2"/></symbol>
+<symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+<symbol id="i-device" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></symbol>
+<symbol id="i-monitor" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></symbol>
 <symbol id="i-play" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21"/></symbol>
 </svg>
 
@@ -269,7 +282,7 @@ svg{stroke-width:1.7;width:1em;height:1em;flex-shrink:0}
 
   <div class="main" id="scrollArea">
     <div class="tab on" id="tabHome">
-      <!-- HERO VIDEO: GOJO / GENSHIN -->
+      <!-- HERO VIDEO -->
       <div class="hero">
         <video id="v1" autoplay muted loop playsinline webkit-playsinline preload="auto" class="on">
           <source src="https://files.catbox.moe/s5sg7n.mp4" type="video/mp4">
@@ -298,7 +311,7 @@ svg{stroke-width:1.7;width:1em;height:1em;flex-shrink:0}
       <div style="padding:32px 16px 24px;text-align:center">
         <div style="width:88px;height:88px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold2));display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:36px;font-weight:900;color:#0a0a0f;box-shadow:0 12px 40px rgba(232,177,70,.35)">S</div>
         <div style="font-size:20px;font-weight:800;letter-spacing:-.03em">Sion User</div>
-        <div style="font-size:12px;color:var(--mut);margin-top:4px">v18 · Vercel</div>
+        <div style="font-size:12px;color:var(--mut);margin-top:4px">v19 · Vercel</div>
       </div>
       <div class="sec">
         <div class="st"><div class="stl"><span>Aksi</span></div></div>
@@ -330,7 +343,7 @@ svg{stroke-width:1.7;width:1em;height:1em;flex-shrink:0}
     <div class="mbody">
       <div class="si"><div class="lb">Tema</div><select id="selTheme" onchange="setTheme(this.value)"><option value="dark">Dark</option><option value="light">Light</option></select></div>
       <div class="si"><div class="lb">Bahasa</div><button class="btn sec" onclick="openLangPicker()" style="max-width:150px;padding:9px 14px;font-size:12px"><svg><use href="#i-globe"/></svg><span id="curLangLabel">Indonesia</span></button></div>
-      <div style="padding:18px 0 0;text-align:center;font-size:11.5px;color:var(--mut)">Sion Hub v18</div>
+      <div style="padding:18px 0 0;text-align:center;font-size:11.5px;color:var(--mut)">Sion Hub v19</div>
     </div>
   </div>
 </div>
@@ -355,8 +368,8 @@ let curVid = 'gojo';
 
 const LANGS = [['af','Afrikaans'],['sq','Shqip'],['am','አማርኛ'],['ar','العربية'],['hy','Հայերեն'],['az','Azərbaycan'],['eu','Euskara'],['be','Беларуская'],['bn','বাংলা'],['bs','Bosanski'],['bg','Български'],['ca','Català'],['ceb','Cebuano'],['zh-CN','简体中文'],['zh-TW','繁體中文'],['hr','Hrvatski'],['cs','Čeština'],['da','Dansk'],['nl','Nederlands'],['en','English'],['et','Eesti'],['fil','Filipino'],['fi','Suomi'],['fr','Français'],['gl','Galego'],['ka','ქართული'],['de','Deutsch'],['el','Ελληνικά'],['gu','ગુજરાતી'],['ha','Hausa'],['he','עברית'],['hi','हिन्दी'],['hu','Magyar'],['is','Íslenska'],['ig','Igbo'],['id','Indonesia'],['ga','Gaeilge'],['it','Italiano'],['ja','日本語'],['jv','Basa Jawa'],['kn','ಕನ್ನಡ'],['kk','Қазақ'],['km','ខ្មែរ'],['ko','한국어'],['ku','Kurdî'],['ky','Кыргызча'],['lo','ລາວ'],['la','Latina'],['lv','Latviešu'],['lt','Lietuvių'],['lb','Lëtzebuergesch'],['mk','Македонски'],['mg','Malagasy'],['ms','Melayu'],['ml','മലയാളം'],['mt','Malti'],['mi','Māori'],['mr','मराठी'],['mn','Монгол'],['my','မြန်မာ'],['ne','नेपाली'],['no','Norsk'],['ps','پښتو'],['fa','فارسی'],['pl','Polski'],['pt','Português'],['pa','ਪੰਜਾਬੀ'],['ro','Română'],['ru','Русский'],['gd','Gàidhlig'],['sr','Српски'],['st','Sesotho'],['sn','Shona'],['sd','سنڌي'],['si','සිංහල'],['sk','Slovenčina'],['sl','Slovenščina'],['so','Soomaali'],['es','Español'],['su','Basa Sunda'],['sw','Kiswahili'],['sv','Svenska'],['tg','Тоҷикӣ'],['ta','தமிழ்'],['tt','Татар'],['te','తెలుగు'],['th','ไทย'],['tr','Türkçe'],['uk','Українська'],['ur','اردو'],['uz','Oʻzbek'],['vi','Tiếng Việt'],['cy','Cymraeg'],['xh','isiXhosa'],['yi','ייִדיש'],['yo','Yorùbá'],['zu','isiZulu']];
 
-function saveS(){try{localStorage.setItem('sion_v18',JSON.stringify(S));}catch(e){}}
-function loadS(){try{Object.assign(S,JSON.parse(localStorage.getItem('sion_v18')||'{}'));}catch(e){}if(!S.lang)S.lang='id';setTheme(S.theme);applyLang();const th=$('selTheme');if(th)th.value=S.theme;}
+function saveS(){try{localStorage.setItem('sion_v19',JSON.stringify(S));}catch(e){}}
+function loadS(){try{Object.assign(S,JSON.parse(localStorage.getItem('sion_v19')||'{}'));}catch(e){}if(!S.lang)S.lang='id';setTheme(S.theme);applyLang();const th=$('selTheme');if(th)th.value=S.theme;}
 function toast(msg,type='info',dur=2400){const w=$('toasts');if(!w)return;if(toastN>=3){const o=w.firstChild;if(o){o.classList.add('out');setTimeout(()=>o.remove(),250);}}else toastN++;const el=document.createElement('div');el.className='toast '+type;el.innerHTML='<span style="font-weight:800">'+(type==='ok'?'✓':type==='err'?'✕':'i')+'</span><span>'+msg+'</span>';w.appendChild(el);setTimeout(()=>{el.classList.add('out');setTimeout(()=>{el.remove();toastN=Math.max(0,toastN-1);},250);},dur);}
 function haptic(d=10){if(navigator.vibrate)navigator.vibrate(d);}
 function esc(v){return String(v??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');}
@@ -367,7 +380,29 @@ function closeSettings(){$('settingsModal').classList.remove('on');}
 function clearAll(){if(!confirm('Hapus semua data?'))return;localStorage.clear();location.reload();}
 function switchTab(n,btn){haptic();document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('on'));$('tab'+n).classList.add('on');btn.classList.add('on');$('scrollArea').scrollTop=0;}
 
-/* HERO VIDEO SWAP */
+/* VIDEO AUTOPLAY FIX */
+function forcePlayVideos(){
+  ['v1','v2'].forEach(id=>{
+    const v=$(id);
+    if(!v)return;
+    v.muted=true;
+    v.playsInline=true;
+    v.setAttribute('muted','');
+    v.setAttribute('playsinline','');
+    const p=v.play();
+    if(p!==undefined&&p.catch){
+      p.catch(()=>{
+        setTimeout(()=>{v.play().catch(()=>{});},400);
+        setTimeout(()=>{v.play().catch(()=>{});},1200);
+      });
+    }
+  });
+}
+document.addEventListener('DOMContentLoaded',()=>{setTimeout(forcePlayVideos,100);setTimeout(forcePlayVideos,800);});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)forcePlayVideos();});
+document.addEventListener('touchstart',forcePlayVideos,{once:true,passive:true});
+document.addEventListener('click',forcePlayVideos,{once:true});
+
 function swapVid(){
   haptic(15);
   const v1=$('v1'),v2=$('v2');
@@ -375,14 +410,14 @@ function swapVid(){
   if(curVid==='gojo'){
     curVid='genshin';
     v1.classList.remove('on');v2.classList.add('on');
-    try{v2.currentTime=0;v2.play().catch(()=>{});}catch(e){}
+    try{v2.currentTime=0;v2.muted=true;v2.play().catch(()=>{});}catch(e){}
     $('vlabel').textContent='GENSHIN';
     $('heroTitle').textContent='Genshin Impact';
     $('heroSub').textContent='Tap swap untuk ganti video';
   }else{
     curVid='gojo';
     v2.classList.remove('on');v1.classList.add('on');
-    try{v1.currentTime=0;v1.play().catch(()=>{});}catch(e){}
+    try{v1.currentTime=0;v1.muted=true;v1.play().catch(()=>{});}catch(e){}
     $('vlabel').textContent='GOJO';
     $('heroTitle').textContent='Gojo vs Sukuna';
     $('heroSub').textContent='Tap swap untuk ganti video';
@@ -408,12 +443,12 @@ async function renderMonitor(){
   const nt=conn?.effectiveType||(online?'4G':'OFF');
   const flag=geo.flag&&geo.flag!=='?'?geo.flag.replace(/./g,c=>String.fromCodePoint(c.charCodeAt(0)+127397)):'';
   el.innerHTML=`
-    <div class="mcard pur"><div class="mh"><div class="ic"><svg><use href="#i-cpu"/></svg></div><div class="ml">Session</div></div><div class="mv">${esc(getBrowserName())}</div></div>
-    <div class="mcard cyn"><div class="mh"><div class="ic"><svg><use href="#i-map"/></svg></div><div class="ml">Negara</div></div><div class="mv">${flag} ${esc(geo.country)}</div></div>
-    <div class="mcard blu"><div class="mh"><div class="ic"><svg><use href="#i-device"/></svg></div><div class="ml">Device</div></div><div class="mv">${esc(getDeviceName().slice(0,14))}</div></div>
-    <div class="mcard org"><div class="mh"><div class="ic"><svg><use href="#i-monitor"/></svg></div><div class="ml">Browser</div></div><div class="mv">${esc(getBrowserName())}</div></div>
-    <div class="mcard ${online?'grn':'red'}"><div class="mh"><div class="ic"><svg><use href="#i-wifi"/></svg></div><div class="ml">Status</div></div><div class="mv"><span class="d ${online?'grn':'red'}"></span>${online?'Online':'Offline'} · ${esc(String(nt).toUpperCase())}</div></div>
-    <div class="mcard grn"><div class="mh"><div class="ic"><svg><use href="#i-battery"/></svg></div><div class="ml">Battery</div></div><div class="mv">${battery?Math.round(battery.level*100)+'%':'-'}${battery?.charging?' ⚡':''}</div></div>
+    <div class="mcard pur"><div class="ic"><svg><use href="#i-cpu"/></svg></div><div class="info"><div class="ml">Session</div><div class="mv">${esc(getBrowserName())}</div></div></div>
+    <div class="mcard cyn"><div class="ic"><svg><use href="#i-map"/></svg></div><div class="info"><div class="ml">Negara</div><div class="mv">${flag} ${esc(geo.country)}</div></div></div>
+    <div class="mcard blu"><div class="ic"><svg><use href="#i-device"/></svg></div><div class="info"><div class="ml">Device</div><div class="mv">${esc(getDeviceName().slice(0,16))}</div></div></div>
+    <div class="mcard org"><div class="ic"><svg><use href="#i-monitor"/></svg></div><div class="info"><div class="ml">Browser</div><div class="mv">${esc(getBrowserName())}</div></div></div>
+    <div class="mcard ${online?'grn':'red'}"><div class="ic"><svg><use href="#i-wifi"/></svg></div><div class="info"><div class="ml">Status</div><div class="mv"><span class="d ${online?'grn':'red'}"></span>${online?'Online':'Offline'}</div></div></div>
+    <div class="mcard grn"><div class="ic"><svg><use href="#i-battery"/></svg></div><div class="info"><div class="ml">Battery</div><div class="mv">${battery?Math.round(battery.level*100)+'%':'-'}${battery?.charging?' ⚡':''}</div></div></div>
   `;
 }
 
@@ -585,7 +620,7 @@ function handleQRResult(text){const isU=text.startsWith('http');const e=$('qrRes
 
 const initToolFn={notes:loadNotesFn};
 
-function initAll(){loadS();renderTools();renderMonitor();setInterval(renderMonitor,30000);}
+function initAll(){loadS();renderTools();renderMonitor();setInterval(renderMonitor,30000);forcePlayVideos();}
 document.addEventListener('DOMContentLoaded',initAll);
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closePanel();closeSettings();closeLangPicker();}});
 </script>
